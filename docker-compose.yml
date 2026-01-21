@@ -1,8 +1,8 @@
-version: '3.8'
 services:
-  app:
+  api:
     build: .
+    container_name: pix-backend-challenge
     ports:
       - "3000:3000"
-    env_file:
-      - .env.example
+    environment:
+      BCB_PIX_PARTICIPANTS_CSV_URL: "https://www.bcb.gov.br/content/estabilidadefinanceira/participantes_pix_pdf/lista-participantes-instituicoes-em-adesao-pix-20260120.pdf"
