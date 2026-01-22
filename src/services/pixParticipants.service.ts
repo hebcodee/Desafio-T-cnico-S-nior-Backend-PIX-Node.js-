@@ -24,7 +24,7 @@ export class PixParticipantsService {
         if (found) {
             console.log("[PIX-SERVICE] ✅ ISPB encontrado:", found);
         } else {
-            console.warn("[PIX-SERVICE] ⚠️ ISPB NÃO encontrado:", ispb);
+            console.log("[PIX-SERVICE] ⚠️ ISPB NÃO encontrado:", ispb);
         }
 
         console.log("========================================");

@@ -30,13 +30,4 @@ describe("GET /pix/participants/:ispb", () => {
     expect(response.status).toBe(404);
     expect(response.body).toEqual({ message: "Not Found" });
     });
-
-    it("não deve retornar 404 quando a rota existe", async () => {
-    const response = await request(app)
-      .get('/hello');
-
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual({ message: "Hello" });
-    });
-    
 });

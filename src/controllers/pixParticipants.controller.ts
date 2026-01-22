@@ -113,10 +113,10 @@ export async function getParticipantByIspb(req: Request, res: Response) {
         }
 
         return res.json(found);
-
+        
     } catch (e: any) {
-        return res.status(502).json({
-            message: "Falha ao consultar fonte do BCB",
+        return res.status(404).json({
+            message: "Participante não encontrado",
             details: e?.message
         });
     }

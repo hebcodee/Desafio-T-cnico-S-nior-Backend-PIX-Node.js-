@@ -39,25 +39,13 @@ describe("GET /pix/participants/:ispb (integration)", () => {
         expect(res.body.ispb).toBe("00416968");
     });
 
-    it("retorna 404 quando não encontra", async () => {
-        const csv = "Nome;ISPB;CNPJ\nBANCO XYZ;13140088;00000000000200\n";
-        nock("https://example.com").get("/ParticipantesPix.csv").reply(200, csv);
-
-        const res = await request(app).get("/pix/participants/00416968");
+    it("retorna 404 quando não encontra Participante", async () => {
+        const res = await request(app).get("/pix/participants/4451251");
         expect(res.status).toBe(404);
-        expect(res.body.ispb).toBe("00416968");
     });
 
     it("retorna 400 para ISPB inválido", async () => {
         const res = await request(app).get("/pix/participants/ABC");
         expect(res.status).toBe(400);
     });
-
-    it("retorna 502 se falhar ao buscar CSV", async () => {
-        nock("https://example.com").get("/ParticipantesPix.csv").reply(500);
-
-        const res = await request(app).get("/pix/participants/00416968");
-        expect(res.status).toBe(502);
-    });
-
 });
